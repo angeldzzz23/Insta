@@ -16,6 +16,7 @@
 		1C536FAC28F4C9F0000B9DF7 /* InstaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C536FAB28F4C9F0000B9DF7 /* InstaUITests.swift */; };
 		1C536FAE28F4C9F0000B9DF7 /* InstaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C536FAD28F4C9F0000B9DF7 /* InstaUITestsLaunchTests.swift */; };
 		1C536FBB28F4DA80000B9DF7 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C536FBA28F4DA80000B9DF7 /* CameraViewController.swift */; };
+		1C536FBD28F4E1B2000B9DF7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C536FBC28F4E1B2000B9DF7 /* FeedViewController.swift */; };
 		4CE503FBC0066ED4F59853EC /* Pods_Insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920C3E5A712CC7F16BFB2AA8 /* Pods_Insta.framework */; };
 		53CCE9DB3E279A12612397EF /* Pods_Insta_InstaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA707185DE85A6CFE55CBA63 /* Pods_Insta_InstaUITests.framework */; };
 		574FD47D8C448EE90911E5B8 /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC7BE678E70164FB0769B83 /* Pods_InstaTests.framework */; };
@@ -53,6 +54,7 @@
 		1C536FAB28F4C9F0000B9DF7 /* InstaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaUITests.swift; sourceTree = "<group>"; };
 		1C536FAD28F4C9F0000B9DF7 /* InstaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1C536FBA28F4DA80000B9DF7 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		1C536FBC28F4E1B2000B9DF7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		47D1A2B17FDA28EF8DC9ECFC /* Pods-Insta-InstaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta-InstaUITests.release.xcconfig"; path = "Target Support Files/Pods-Insta-InstaUITests/Pods-Insta-InstaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		672F16052859B38F4BD14DF4 /* Pods-InstaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaTests.release.xcconfig"; path = "Target Support Files/Pods-InstaTests/Pods-InstaTests.release.xcconfig"; sourceTree = "<group>"; };
 		6AC7BE678E70164FB0769B83 /* Pods_InstaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				1C536F8C28F4C9EF000B9DF7 /* SceneDelegate.swift */,
 				1C536F8E28F4C9EF000B9DF7 /* ViewController.swift */,
 				1C536FBA28F4DA80000B9DF7 /* CameraViewController.swift */,
+				1C536FBC28F4E1B2000B9DF7 /* FeedViewController.swift */,
 				1C536F9328F4C9F0000B9DF7 /* Assets.xcassets */,
 				1C536F9528F4C9F0000B9DF7 /* LaunchScreen.storyboard */,
 				1C536F9828F4C9F0000B9DF7 /* Info.plist */,
@@ -407,6 +410,7 @@
 			files = (
 				1C536F8F28F4C9EF000B9DF7 /* ViewController.swift in Sources */,
 				1C536FBB28F4DA80000B9DF7 /* CameraViewController.swift in Sources */,
+				1C536FBD28F4E1B2000B9DF7 /* FeedViewController.swift in Sources */,
 				1C536F8B28F4C9EF000B9DF7 /* AppDelegate.swift in Sources */,
 				1C536F8D28F4C9EF000B9DF7 /* SceneDelegate.swift in Sources */,
 			);
