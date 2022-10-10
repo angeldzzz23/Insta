@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
     
@@ -50,8 +51,7 @@ class ViewController: UIViewController {
         return lbl
     }()
     
-    
-    
+
     //password textfield
     let passWordtextfield: UITextField = {
         let txtfield = UITextField()
@@ -62,9 +62,20 @@ class ViewController: UIViewController {
         return txtfield
     }()
     
+    
     let LoginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(loginButtonWasPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    let createButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Create Account", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(createAccountButtonWasPressed), for: .touchUpInside)
         return button
     }()
     
@@ -87,7 +98,8 @@ class ViewController: UIViewController {
         view.addSubview(Usernametextfield)
         view.addSubview(passWordLbl)
         view.addSubview(passWordtextfield)
-        
+        view.addSubview(LoginButton)
+        view.addSubview(createButton)
     }
     
     private func addConstraints() {
@@ -118,11 +130,53 @@ class ViewController: UIViewController {
             passWordtextfield.topAnchor.constraint(equalTo: passWordLbl.bottomAnchor, constant: 5),
             passWordtextfield.heightAnchor.constraint(equalToConstant: 30)
         ])
+        
+        NSLayoutConstraint.activate([
+            LoginButton.leadingAnchor.constraint(equalTo: passWordtextfield.leadingAnchor),
+            LoginButton.topAnchor.constraint(equalTo: passWordtextfield.bottomAnchor,constant: 10)
+        ])
+        NSLayoutConstraint.activate([
+            createButton.trailingAnchor.constraint(equalTo: passWordtextfield.trailingAnchor),
+            createButton.topAnchor.constraint(equalTo: passWordtextfield.bottomAnchor,constant: 10)
+        ])
+        
+        
  
     }
     
     // login in user
-    private @objc func loginButtonWasPressed() {
+    @objc private func loginButtonWasPressed() {
+
+        PFUser.logInWithUsername(inBackground: Usernametextfield.text ?? "", password:passWordtextfield.text ?? "") {
+          (user: PFUser?, error: Error?) -> Void in
+          if user != nil {
+            // Do stuff after successful login.
+              print("logged in")
+          } else {
+            // The login failed. Check error to see why.
+          }
+        }
+
+        
+    }
+    
+    // Create account for user
+    @objc private func createAccountButtonWasPressed() {
+        var user = PFUser()
+        user.username = Usernametextfield.text
+        user.password = passWordtextfield.text
+        
+        user.signUpInBackground {
+            (succeeded: Bool, error: Error?) -> Void in
+            if let error = error {
+              let errorString = error.localizedDescription
+              // Show the errorString somewhere and let the user try again.
+                print(errorString)
+            } else {
+              // Hooray! Let them use the app now.
+                // Segue way to loggin in
+            }
+          }
         
     }
 
