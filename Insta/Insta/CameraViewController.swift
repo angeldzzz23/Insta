@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import AlamofireImage
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // adding imageview
     let instaLogoIMAGE: UIImageView = {
@@ -21,7 +22,26 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate {
     }()
     
     @objc func didTapImage() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
         
+        present(picker, animated: true, completion: nil)
+        
+    }
+    
+    // delegate method
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+        let size = CGSize(width: 300, height: 300)
+        let scaleImage = image.af.imageScaled(to: size, scale: nil)
+        instaLogoIMAGE.image = scaleImage
+        dismiss(animated: true, completion: nil)
     }
     
     // textfield
