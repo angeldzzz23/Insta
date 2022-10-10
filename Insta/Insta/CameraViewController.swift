@@ -7,7 +7,7 @@
 
 import UIKit
 import AlamofireImage
-
+import Parse
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // adding imageview
@@ -85,6 +85,22 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     @objc private func submitButtonWasPressed() {
+        let posts = PFObject(className: "Posts")
+        
+        posts["caption"] = captionTextField.text!
+        posts["author"] = PFUser.current()!
+        
+        let imageData = instaLogoIMAGE.image!.pngData()
+        let file = PFFileObject(name: "image.png", data: imageData!)
+        posts["image"] = file
+        
+        posts.saveInBackground { success, error in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print("error!")
+            }
+        }
         
     }
     
