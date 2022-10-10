@@ -139,10 +139,10 @@ class ViewController: UIViewController {
             createButton.trailingAnchor.constraint(equalTo: passWordtextfield.trailingAnchor),
             createButton.topAnchor.constraint(equalTo: passWordtextfield.bottomAnchor,constant: 10)
         ])
-        
-        
- 
     }
+    
+    
+    
     
     // login in user
     @objc private func loginButtonWasPressed() {
