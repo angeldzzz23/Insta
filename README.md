@@ -22,3 +22,4 @@ The following **bonus** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+![video2](https://user-images.githubusercontent.com/29695936/194976246-266906a6-230e-4468-a265-6c8f13e71648.gif)
