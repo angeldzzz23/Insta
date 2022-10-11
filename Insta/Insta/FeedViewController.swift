@@ -9,6 +9,11 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -38,7 +43,7 @@ class FeedViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         
         navigationController?.present(vc, animated: true)
-//        navigationController?.showDetailViewController(Came, sender: <#T##Any?#>)
+        
     }
     
     
