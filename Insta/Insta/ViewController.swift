@@ -81,6 +81,8 @@ class ViewController: UIViewController {
     
     
     
+  
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +90,11 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         addView()
         addConstraints()
+        
+        
     }
+    
+ 
     
     
     // MARK: Helper functions

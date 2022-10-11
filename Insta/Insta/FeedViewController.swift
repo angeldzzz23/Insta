@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Parse
+import AlamofireImage
 
 class FeedViewController: UIViewController {
 
@@ -16,6 +18,28 @@ class FeedViewController: UIViewController {
         tb.register(PostCellTableViewCell.self, forCellReuseIdentifier: PostCellTableViewCell.identifier)
         return tb
     }()
+    
+    
+    
+    
+    var posts = [PFObject]()
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        let query = PFQuery(className: "Posts")
+        query.includeKey("author")
+        query.limit = 20
+        
+        query.findObjectsInBackground { posts, error in
+            if posts != nil {
+                self.posts = posts!
+                self.feedTableView.reloadData()
+            }
+        }
+    }
     
     
     
@@ -66,11 +90,22 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PostCellTableViewCell.identifier, for: indexPath) as! PostCellTableViewCell
+        
+        let post = posts[indexPath.row]
+        let user = post["author"] as! PFUser
+        cell.lblName.text = user.username
+        cell.postCaptionLbl.text = post["caption"] as! String
+        
+        let imageFile = post["image"] as! PFFileObject
+        let urlStrinh = imageFile.url!
+        let url = URL(string: urlStrinh)!
+        
+        cell.postImage.af.setImage(withURL: url)
         
         return cell
     }
