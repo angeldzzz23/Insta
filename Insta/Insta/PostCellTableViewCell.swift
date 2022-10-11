@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Parse
 
 class PostCellTableViewCell: UITableViewCell {
     
     static let identifier = "PostCellTableViewCell"
+
     
     // add post image
     let postImage: UIImageView = {
@@ -31,8 +33,13 @@ class PostCellTableViewCell: UITableViewCell {
         return lbl
     }()
     
-
     // add post caption
+    let postCaptionLbl: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "This is my first post!"
+        return lbl
+    }()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -45,6 +52,7 @@ class PostCellTableViewCell: UITableViewCell {
     private func addToContentView() {
         contentView.addSubview(postImage)
         contentView.addSubview(lblName)
+        contentView.addSubview(postCaptionLbl)
     }
     
     private func setConstraints() {
@@ -58,6 +66,11 @@ class PostCellTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             lblName.leadingAnchor.constraint(equalTo: postImage.leadingAnchor),
             lblName.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10)
+        ])
+        
+        NSLayoutConstraint.activate([
+            postCaptionLbl.centerYAnchor.constraint(equalTo: lblName.centerYAnchor),
+            postCaptionLbl.leadingAnchor.constraint(equalTo: lblName.trailingAnchor, constant: 10)
         ])
         
     }
