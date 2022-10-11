@@ -100,6 +100,8 @@ class ViewController: UIViewController {
         view.addSubview(passWordtextfield)
         view.addSubview(LoginButton)
         view.addSubview(createButton)
+        
+        
     }
     
     private func addConstraints() {
@@ -152,6 +154,10 @@ class ViewController: UIViewController {
           if user != nil {
             // Do stuff after successful login.
               print("logged in")
+              
+              let FeedViewController = UINavigationController(rootViewController: FeedViewController())
+              FeedViewController.modalPresentationStyle = .fullScreen
+              self.present(FeedViewController, animated: true)
           } else {
             // The login failed. Check error to see why.
           }
