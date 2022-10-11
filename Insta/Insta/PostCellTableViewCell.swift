@@ -12,18 +12,54 @@ class PostCellTableViewCell: UITableViewCell {
     static let identifier = "PostCellTableViewCell"
     
     // add post image
+    let postImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = .yellow
+        return imageView
+    }()
     
     
     // \,  height of image 344
     
     // add post name
     
+    let lblName: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "@Angelzzz23"
+        return lbl
+    }()
+    
+
     // add post caption
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .green
+        
+        addToContentView()
+        setConstraints()
+    }
+    
+    private func addToContentView() {
+        contentView.addSubview(postImage)
+        contentView.addSubview(lblName)
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            postImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            postImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            postImage.heightAnchor.constraint(equalToConstant: 344)
+        ])
+        
+        NSLayoutConstraint.activate([
+            lblName.leadingAnchor.constraint(equalTo: postImage.leadingAnchor),
+            lblName.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 10)
+        ])
+        
     }
     
     required init?(coder: NSCoder) {

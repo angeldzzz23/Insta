@@ -23,8 +23,6 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-    
         let instBtn = UIBarButtonItem(image: UIImage(named: "insta_camera_btn"), style: .done, target: self, action: .some(#selector(cameraButtonWasPressed)) )
         let rightButton: UIBarButtonItem = instBtn
         self.navigationItem.rightBarButtonItem = rightButton
