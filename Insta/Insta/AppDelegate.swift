@@ -28,7 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
             Parse.initialize(with: parseConfig)
             
-        
+        // checking if the current user is not nil
+//        if PFUser.current() != nil {
+//            let feed = FeedViewController()
+//            window?.rootViewController = feed
+//            
+//        }
+//        
         
         return true
     }

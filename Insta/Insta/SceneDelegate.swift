@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,11 +20,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        guard let _ = (scene as? UIWindowScene) else { return }
         
         if let windowScene = scene as? UIWindowScene {
+            
             let window = UIWindow(windowScene: windowScene)
-            let rootVC = ViewController()
-            window.rootViewController = UINavigationController(rootViewController: rootVC)
-            self.window = window
-            window.makeKeyAndVisible()
+            
+            if PFUser.current() != nil {
+                let feed = FeedViewController()
+                window.rootViewController = feed
+                self.window = window
+                window.makeKeyAndVisible()
+            } else {
+                let rootVC = ViewController()
+                
+                
+                window.rootViewController = UINavigationController(rootViewController: rootVC)
+                self.window = window
+                window.makeKeyAndVisible()
+            }
+            
+          
         }
         
         

@@ -80,9 +80,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         view.addSubview(instaLogoIMAGE)
         view.addSubview(captionTextField)
         view.addSubview(submitButton)
-        
     }
-    
     
     @objc private func submitButtonWasPressed() {
         let posts = PFObject(className: "Posts")

@@ -9,8 +9,6 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController {
-    
-    
     // MARK:
     // image
     let instaLogoIMAGE: UIImageView = {
@@ -78,11 +76,7 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(createAccountButtonWasPressed), for: .touchUpInside)
         return button
     }()
-    
-    
-    
-  
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,12 +85,8 @@ class ViewController: UIViewController {
         addView()
         addConstraints()
         
-        
     }
-    
- 
-    
-    
+  
     // MARK: Helper functions
     private func addView() {
         view.addSubview(instaLogoIMAGE)
@@ -159,8 +149,6 @@ class ViewController: UIViewController {
           (user: PFUser?, error: Error?) -> Void in
           if user != nil {
             // Do stuff after successful login.
-              print("logged in")
-              
               let FeedViewController = UINavigationController(rootViewController: FeedViewController())
               FeedViewController.modalPresentationStyle = .fullScreen
               self.present(FeedViewController, animated: true)
@@ -168,11 +156,10 @@ class ViewController: UIViewController {
             // The login failed. Check error to see why.
           }
         }
-
-        
     }
     
     // Create account for user
+    
     @objc private func createAccountButtonWasPressed() {
         var user = PFUser()
         user.username = Usernametextfield.text
