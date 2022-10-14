@@ -51,6 +51,10 @@ class FeedViewController: UIViewController {
         let rightButton: UIBarButtonItem = instBtn
         self.navigationItem.rightBarButtonItem = rightButton
         
+        //
+        let lbutton = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(doneButtonWasPressed))
+        let leftButton: UIBarButtonItem = lbutton
+        self.navigationItem.leftBarButtonItem = leftButton
         
         addSubviews()
         setConstraints()
@@ -64,6 +68,16 @@ class FeedViewController: UIViewController {
         
         navigationController?.present(vc, animated: true)
         
+    }
+    
+    @objc func doneButtonWasPressed() {
+        PFUser.logOut()
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let delegate = windowScene.delegate as? SceneDelegate else {return}
+        
+        let loginVC = ViewController()
+        delegate.window?.rootViewController = loginVC
     }
     
    
