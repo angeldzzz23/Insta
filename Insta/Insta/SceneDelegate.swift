@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             
             if PFUser.current() != nil {
-                let feed = FeedViewController()
+                let feed = UINavigationController(rootViewController:  FeedViewController())
+               
                 window.rootViewController = feed
                 self.window = window
                 window.makeKeyAndVisible()

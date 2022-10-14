@@ -51,6 +51,8 @@ class FeedViewController: UIViewController {
         let rightButton: UIBarButtonItem = instBtn
         self.navigationItem.rightBarButtonItem = rightButton
         
+        // adding l
+        
         
         addSubviews()
         setConstraints()
