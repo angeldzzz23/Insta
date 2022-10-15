@@ -11,7 +11,9 @@ import Parse
 class PostCellTableViewCell: UITableViewCell {
     
     static let identifier = "PostCellTableViewCell"
-
+    
+    
+ 
     
     // add post image
     let postImage: UIImageView = {

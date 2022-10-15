@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C14646128FA2D6100EF3ADB /* commentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C14646028FA2D6100EF3ADB /* commentTableViewCell.swift */; };
 		1C536F8B28F4C9EF000B9DF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C536F8A28F4C9EF000B9DF7 /* AppDelegate.swift */; };
 		1C536F8D28F4C9EF000B9DF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C536F8C28F4C9EF000B9DF7 /* SceneDelegate.swift */; };
 		1C536F8F28F4C9EF000B9DF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C536F8E28F4C9EF000B9DF7 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		13439105A8C8149D455D66EA /* Pods-Insta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.debug.xcconfig"; path = "Target Support Files/Pods-Insta/Pods-Insta.debug.xcconfig"; sourceTree = "<group>"; };
+		1C14646028FA2D6100EF3ADB /* commentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentTableViewCell.swift; sourceTree = "<group>"; };
 		1C536F8728F4C9EF000B9DF7 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C536F8A28F4C9EF000B9DF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C536F8C28F4C9EF000B9DF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				1C536F8E28F4C9EF000B9DF7 /* ViewController.swift */,
 				1C536FBA28F4DA80000B9DF7 /* CameraViewController.swift */,
 				1C536FBC28F4E1B2000B9DF7 /* FeedViewController.swift */,
+				1C14646028FA2D6100EF3ADB /* commentTableViewCell.swift */,
 				1C536FBE28F4EFAD000B9DF7 /* PostCellTableViewCell.swift */,
 				1C536F9328F4C9F0000B9DF7 /* Assets.xcassets */,
 				1C536F9528F4C9F0000B9DF7 /* LaunchScreen.storyboard */,
@@ -414,6 +417,7 @@
 				1C536F8F28F4C9EF000B9DF7 /* ViewController.swift in Sources */,
 				1C536FBB28F4DA80000B9DF7 /* CameraViewController.swift in Sources */,
 				1C536FBD28F4E1B2000B9DF7 /* FeedViewController.swift in Sources */,
+				1C14646128FA2D6100EF3ADB /* commentTableViewCell.swift in Sources */,
 				1C536FBF28F4EFAD000B9DF7 /* PostCellTableViewCell.swift in Sources */,
 				1C536F8B28F4C9EF000B9DF7 /* AppDelegate.swift in Sources */,
 				1C536F8D28F4C9EF000B9DF7 /* SceneDelegate.swift in Sources */,
