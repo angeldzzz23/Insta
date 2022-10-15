@@ -23,6 +23,8 @@ class FeedViewController: UIViewController {
     }()
     let commentBar = MessageInputBar()
     
+    var showsCommentBar = false
+    
     
     override var inputAccessoryView: UIView? {
         return commentBar
