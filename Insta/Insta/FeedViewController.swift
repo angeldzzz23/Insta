@@ -16,6 +16,7 @@ class FeedViewController: UIViewController {
         let tb  = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false
         tb.register(PostCellTableViewCell.self, forCellReuseIdentifier: PostCellTableViewCell.identifier)
+        tb.register(commentTableViewCell.self, forCellReuseIdentifier: commentTableViewCell.identifier)
         return tb
     }()
 
@@ -30,7 +31,7 @@ class FeedViewController: UIViewController {
 
 
         let query = PFQuery(className: "Posts")
-        query.includeKey("author")
+        query.includeKeys(["author", "comments", "comments.author"])
         query.limit = 20
 
         query.findObjectsInBackground { posts, error in
@@ -103,31 +104,91 @@ class FeedViewController: UIViewController {
 }
 
 extension FeedViewController: UITableViewDataSource {
+    
+    
+   
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+
+        let comment = PFObject(className: "Comments")
+        comment["text"] = "This is a random comment"
+        comment["post"] = post
+        comment["author"] = PFUser.current()!
+
+//        post.add(comment, forKey: "comments")
+//        post.saveInBackground() { (success, error) in
+//            if success {
+//                print("comment saved")
+//            } else {
+//                print("errror saving comment")
+//            }
+//        }
+    
+    
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        let post = posts[section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        
+        return comments.count + 1
     }
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return posts.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostCellTableViewCell.identifier, for: indexPath) as! PostCellTableViewCell
 
-        let post = posts[indexPath.row]
-        let user = post["author"] as! PFUser
-        cell.lblName.text = user.username
-        cell.postCaptionLbl.text = post["caption"] as! String
+        let post = posts[indexPath.section]
+        
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostCellTableViewCell.identifier, for: indexPath) as! PostCellTableViewCell
+            
+            let user = post["author"] as! PFUser
+            cell.lblName.text = user.username
+            cell.postCaptionLbl.text = post["caption"] as! String
 
-        let imageFile = post["image"] as! PFFileObject
-        let urlStrinh = imageFile.url!
-        let url = URL(string: urlStrinh)!
+            let imageFile = post["image"] as! PFFileObject
+            let urlStrinh = imageFile.url!
+            let url = URL(string: urlStrinh)!
 
-        cell.postImage.af.setImage(withURL: url)
+            cell.postImage.af.setImage(withURL: url)
 
-        return cell
+            return cell
+
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: commentTableViewCell.identifier, for: indexPath) as! commentTableViewCell
+            let comment = comments[indexPath.row - 1]
+           let commentTxt = comment["text"] as? String
+            let user = comment["author"] as? PFUser
+            cell.usernamelbl.text = user?.username ?? ""
+            cell.commentLbl.text = commentTxt
+            
+            
+            
+
+            return cell
+        }
+        
     }
 
 }
 
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        if indexPath.row == 0 {
+            return 400
+        } else {
+            return 44
+        }
+    
     }
 }
