@@ -8,6 +8,8 @@
 import UIKit
 import Parse
 import AlamofireImage
+import MessageInputBar
+
 
 class FeedViewController: UIViewController {
 
@@ -19,6 +21,17 @@ class FeedViewController: UIViewController {
         tb.register(commentTableViewCell.self, forCellReuseIdentifier: commentTableViewCell.identifier)
         return tb
     }()
+    let commentBar = MessageInputBar()
+    
+    
+    override var inputAccessoryView: UIView? {
+        return commentBar
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
 
 
 
@@ -59,7 +72,10 @@ class FeedViewController: UIViewController {
 
         addSubviews()
         setConstraints()
-
+        
+        feedTableView.keyboardDismissMode = .interactive
+        
+        
     }
 
     @objc func cameraButtonWasPressed() {
