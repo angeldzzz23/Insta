@@ -194,13 +194,16 @@ extension FeedViewController: UITableViewDataSource {
 
             return cell
 
-        } else if indexPath.row <= comments.count {
+        } else if indexPath.row <= comments.count { // setting the comment
             let cell = tableView.dequeueReusableCell(withIdentifier: commentTableViewCell.identifier, for: indexPath) as! commentTableViewCell
             let comment = comments[indexPath.row - 1]
            let commentTxt = comment["text"] as? String
+            
             let user = comment["author"] as? PFUser
-            cell.usernamelbl.text = user?.username ?? ""
-            cell.commentLbl.text = commentTxt
+            cell.settingProperties(username: user?.username, comment: commentTxt)
+            
+//            cell.usernamelbl.text = user?.username ?? ""
+//            cell.commentLbl.text = commentTxt
 
             return cell
         } else {

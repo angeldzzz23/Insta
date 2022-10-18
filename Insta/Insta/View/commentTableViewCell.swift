@@ -28,6 +28,15 @@ class commentTableViewCell: UITableViewCell {
     }()
     
     
+    // setting properties
+    // if they are nil, then show error text
+    func settingProperties(username: String?, comment: String?) {
+        
+        usernamelbl.text  = username ?? "error"
+        commentLbl.text = comment ?? "error"
+        
+        
+    }
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
