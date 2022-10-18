@@ -12,23 +12,17 @@ class PostCellTableViewCell: UITableViewCell {
     
     static let identifier = "PostCellTableViewCell"
     
-    
- 
-    
     // add post image
-    let postImage: UIImageView = {
+    private let postImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .yellow
         return imageView
     }()
     
-    
-    // \,  height of image 344
-    
     // add post name
     
-    let lblName: UILabel = {
+    private let lblName: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "@Angelzzz23"
@@ -36,12 +30,21 @@ class PostCellTableViewCell: UITableViewCell {
     }()
     
     // add post caption
-    let postCaptionLbl: UILabel = {
+    private let postCaptionLbl: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.text = "This is my first post!"
         return lbl
     }()
+    
+    
+    func setProperties(userName: String?, caption: String?, imageurl: URL) {
+        lblName.text = userName ?? "error"
+        postCaptionLbl.text = caption ?? "error"
+        postImage.af.setImage(withURL: imageurl)
+        
+        
+    }
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

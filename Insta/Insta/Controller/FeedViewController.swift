@@ -181,14 +181,16 @@ extension FeedViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostCellTableViewCell.identifier, for: indexPath) as! PostCellTableViewCell
             
             let user = post["author"] as! PFUser
-            cell.lblName.text = user.username
-            cell.postCaptionLbl.text = post["caption"] as! String
+//            cell.lblName.text = user.username
+//            cell.postCaptionLbl.text = post["caption"] as! String
 
             let imageFile = post["image"] as! PFFileObject
             let urlStrinh = imageFile.url!
             let url = URL(string: urlStrinh)!
 
-            cell.postImage.af.setImage(withURL: url)
+//            cell.postImage.af.setImage(withURL: url)
+            cell.setProperties(userName: user.username, caption: post["caption"] as! String, imageurl: url)
+            
 
             return cell
 
