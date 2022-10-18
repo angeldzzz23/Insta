@@ -70,6 +70,12 @@ class FeedViewController: UIViewController {
         let rightButton: UIBarButtonItem = instBtn
         self.navigationItem.rightBarButtonItem = rightButton
 
+        commentBar.inputTextView.placeholder = "Add a comment"
+        commentBar.sendButton.title =  "Post"
+        commentBar.delegate = self
+        
+        
+        
         //
         let lbutton = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(doneButtonWasPressed))
         let leftButton: UIBarButtonItem = lbutton
@@ -80,7 +86,16 @@ class FeedViewController: UIViewController {
         
         feedTableView.keyboardDismissMode = .interactive
         
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(keyboardWillBeHidden(note:)), name:UIResponder.keyboardWillHideNotification, object: nil)
         
+        
+    }
+    
+    @objc func keyboardWillBeHidden(note: Notification) {
+        commentBar.inputTextView.text = nil
+        showsCommentBar = false
+        becomeFirstResponder()
     }
 
     @objc func cameraButtonWasPressed() {
@@ -225,5 +240,18 @@ extension FeedViewController: UITableViewDelegate {
             return 44
         }
     
+    }
+}
+
+extension FeedViewController: MessageInputBarDelegate {
+    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+        // create the comment
+        
+        // clear and dismiss the input
+        commentBar.inputTextView.text = nil
+        showsCommentBar = false
+        becomeFirstResponder()
+        commentBar.inputTextView.resignFirstResponder()
+        
     }
 }
