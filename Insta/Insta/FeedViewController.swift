@@ -13,12 +13,15 @@ import MessageInputBar
 
 class FeedViewController: UIViewController {
 
+    var selectedPost: PFObject!
 
     let feedTableView: UITableView = {
         let tb  = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false
         tb.register(PostCellTableViewCell.self, forCellReuseIdentifier: PostCellTableViewCell.identifier)
         tb.register(commentTableViewCell.self, forCellReuseIdentifier: commentTableViewCell.identifier)
+        
+        tb.register(AddCommentTableViewCell.self, forCellReuseIdentifier: AddCommentTableViewCell.identifier)
         return tb
     }()
     let commentBar = MessageInputBar()
@@ -127,12 +130,21 @@ extension FeedViewController: UITableViewDataSource {
    
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row]
-
-        let comment = PFObject(className: "Comments")
-        comment["text"] = "This is a random comment"
-        comment["post"] = post
-        comment["author"] = PFUser.current()!
+        let post = posts[indexPath.section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        if indexPath.row == comments.count + 1 {
+            showsCommentBar = true
+            becomeFirstResponder()
+            commentBar.inputTextView.becomeFirstResponder()
+            selectedPost = post
+            
+        }
+//        comment["text"] = "This is a random comment"
+//        comment["post"] = post
+//        comment["author"] = PFUser.current()!
+        
+        
 
 //        post.add(comment, forKey: "comments")
 //        post.saveInBackground() { (success, error) in
@@ -152,7 +164,7 @@ extension FeedViewController: UITableViewDataSource {
         let comments = (post["comments"] as? [PFObject]) ?? []
         
         
-        return comments.count + 1
+        return comments.count + 2
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -182,7 +194,7 @@ extension FeedViewController: UITableViewDataSource {
 
             return cell
 
-        } else {
+        } else if indexPath.row <= comments.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: commentTableViewCell.identifier, for: indexPath) as! commentTableViewCell
             let comment = comments[indexPath.row - 1]
            let commentTxt = comment["text"] as? String
@@ -193,6 +205,11 @@ extension FeedViewController: UITableViewDataSource {
             
             
 
+            return cell
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: AddCommentTableViewCell.identifier, for: indexPath) as! AddCommentTableViewCell
+            
             return cell
         }
         
