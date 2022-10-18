@@ -58,6 +58,8 @@ class FeedViewController: UIViewController {
                 self.feedTableView.reloadData()
             }
         }
+        
+
     }
 
 
@@ -88,8 +90,7 @@ class FeedViewController: UIViewController {
         
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(keyboardWillBeHidden(note:)), name:UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
+            
     }
     
     @objc func keyboardWillBeHidden(note: Notification) {
@@ -132,12 +133,14 @@ class FeedViewController: UIViewController {
             feedTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             feedTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             feedTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            feedTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            feedTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -84)
         ])
 
     }
 
 }
+
+
 
 extension FeedViewController: UITableViewDataSource {
     
@@ -160,7 +163,6 @@ extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let post = posts[section]
         let comments = (post["comments"] as? [PFObject]) ?? []
-        
         
         return comments.count + 2
     }
