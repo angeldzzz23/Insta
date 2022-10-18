@@ -176,9 +176,7 @@ class ViewController: UIViewController {
                 // Segue way to loggin in
             }
           }
-        
     }
-
-
+    
 }
 

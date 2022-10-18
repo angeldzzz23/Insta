@@ -153,24 +153,7 @@ extension FeedViewController: UITableViewDataSource {
             becomeFirstResponder()
             commentBar.inputTextView.becomeFirstResponder()
             selectedPost = post
-            
         }
-//        comment["text"] = "This is a random comment"
-//        comment["post"] = post
-//        comment["author"] = PFUser.current()!
-        
-        
-
-//        post.add(comment, forKey: "comments")
-//        post.saveInBackground() { (success, error) in
-//            if success {
-//                print("comment saved")
-//            } else {
-//                print("errror saving comment")
-//            }
-//        }
-    
-    
     }
     
     
@@ -216,9 +199,6 @@ extension FeedViewController: UITableViewDataSource {
             let user = comment["author"] as? PFUser
             cell.usernamelbl.text = user?.username ?? ""
             cell.commentLbl.text = commentTxt
-            
-            
-            
 
             return cell
         } else {
@@ -263,9 +243,6 @@ extension FeedViewController: MessageInputBarDelegate {
              
         feedTableView.reloadData()
        
-        
-        
-        
         
         // clear and dismiss the input
         commentBar.inputTextView.text = nil

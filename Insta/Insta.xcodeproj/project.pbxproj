@@ -99,6 +99,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C263AA128FF1FC000D2488F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1C263AA228FF1FC600D2488F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C536FBE28F4EFAD000B9DF7 /* PostCellTableViewCell.swift */,
+				1C14646228FA3FD900EF3ADB /* AddCommentTableViewCell.swift */,
+				1C14646028FA2D6100EF3ADB /* commentTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1C263AA328FF1FD000D2488F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1C536F8E28F4C9EF000B9DF7 /* ViewController.swift */,
+				1C536FBA28F4DA80000B9DF7 /* CameraViewController.swift */,
+				1C536FBC28F4E1B2000B9DF7 /* FeedViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1C536F7E28F4C9EF000B9DF7 = {
 			isa = PBXGroup;
 			children = (
@@ -126,12 +153,9 @@
 			children = (
 				1C536F8A28F4C9EF000B9DF7 /* AppDelegate.swift */,
 				1C536F8C28F4C9EF000B9DF7 /* SceneDelegate.swift */,
-				1C536F8E28F4C9EF000B9DF7 /* ViewController.swift */,
-				1C536FBA28F4DA80000B9DF7 /* CameraViewController.swift */,
-				1C536FBC28F4E1B2000B9DF7 /* FeedViewController.swift */,
-				1C14646228FA3FD900EF3ADB /* AddCommentTableViewCell.swift */,
-				1C14646028FA2D6100EF3ADB /* commentTableViewCell.swift */,
-				1C536FBE28F4EFAD000B9DF7 /* PostCellTableViewCell.swift */,
+				1C263AA128FF1FC000D2488F /* Model */,
+				1C263AA228FF1FC600D2488F /* View */,
+				1C263AA328FF1FD000D2488F /* Controller */,
 				1C536F9328F4C9F0000B9DF7 /* Assets.xcassets */,
 				1C536F9528F4C9F0000B9DF7 /* LaunchScreen.storyboard */,
 				1C536F9828F4C9F0000B9DF7 /* Info.plist */,
