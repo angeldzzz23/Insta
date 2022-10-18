@@ -246,6 +246,26 @@ extension FeedViewController: UITableViewDelegate {
 extension FeedViewController: MessageInputBarDelegate {
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         // create the comment
+        let comment = PFObject(className: "Comments")
+        comment["text"] = text
+        comment["post"] = selectedPost
+        comment["author"] = PFUser.current()!
+        
+        selectedPost.add(comment, forKey: "comments")
+       
+        selectedPost.saveInBackground { (success, error) in
+                 if success {
+                     print("Comment saved")
+                 } else {
+                     print("Error saving comment")
+                 }
+             }
+             
+        feedTableView.reloadData()
+       
+        
+        
+        
         
         // clear and dismiss the input
         commentBar.inputTextView.text = nil
